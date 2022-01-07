@@ -57,10 +57,14 @@ const register = async (req, res) => {
 
         await newUser.save();
 
-        const accessToken = jwt.sign({
-            userId: newUser._id
-        },
-            process.env.ACCESS_TOKEN_SECRET);
+        const accessToken = jwt.sign(
+            {
+                userId: newUser._id
+            },
+            process.env.ACCESS_TOKEN_SECRET,
+            {
+                "expiresIn": 3600
+            });
 
         return res.json({
             success: true,
@@ -107,10 +111,16 @@ const login = async (req, res) => {
             });
         }
 
-        const accessToken = jwt.sign({
-            userId: user._id
-        },
-            process.env.ACCESS_TOKEN_SECRET);
+        const accessToken = jwt.sign(
+            {
+                userId: user._id
+            },
+            process.env.ACCESS_TOKEN_SECRET,
+            {
+                expiresIn: 3600
+            }
+
+        );
 
 
         return res.json({
