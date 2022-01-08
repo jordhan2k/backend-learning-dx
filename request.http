@@ -19,3 +19,15 @@ Content-Type: application/json
     "username": "daylamottaikhoanmoi",
     "password": "12334354"
 }
+
+###
+GET http://localhost:5000/api/v1/time/currentTime
+
+###
+POST http://localhost:5000/api/v1/time/formatTime
+Content-Type: application/json
+
+{
+    "timeString" : "20220812011030",
+    "format" : "YYYYMMDDHHmmss"
+}
