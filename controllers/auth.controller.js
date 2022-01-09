@@ -138,6 +138,4 @@ const login = async (req, res) => {
     }
 }
 
-exports.checkAuthStatus = checkAuthStatus;
-exports.register = register;
-exports.login = login;
+module.exports = {checkAuthStatus, register, login};
