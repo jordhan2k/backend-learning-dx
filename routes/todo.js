@@ -1,7 +1,13 @@
 const express = require('express');
+const { check } = require('express-validator');
 const router = express.Router();
 const todoController = require('../controllers/todo.controller');
+const verifyToken = require('../middlewares/auth');
 
+const verifyTodo = [
+    check("title").notEmpty().withMessage("Title must be a bin-empty string."),
+    check("isCompleted").isBoolean().withMessage("IsCompleted must be a boolean value.")
+];
 
 /**
  * @route GET api/v1/todos
@@ -9,6 +15,7 @@ const todoController = require('../controllers/todo.controller');
  * @access Private
  */
 router.get('/',
+    verifyToken,
     todoController.getAllTodos
 );
 
@@ -18,6 +25,7 @@ router.get('/',
  * @access Private
  */
 router.get('/:id',
+    verifyToken,
     todoController.getTodo
 );
 
@@ -27,6 +35,8 @@ router.get('/:id',
  * @access Private
  */
 router.post('/',
+    verifyToken,
+    verifyTodo,
     todoController.addTodo
 );
 
@@ -36,6 +46,8 @@ router.post('/',
  * @access Private
  */
 router.put('/:id',
+    verifyToken,
+    verifyTodo,
     todoController.updateTodo
 );
 
@@ -45,6 +57,7 @@ router.put('/:id',
  * @access Private
  */
 router.delete('/:id',
+    verifyToken,
     todoController.deleteTodo
 );
 
