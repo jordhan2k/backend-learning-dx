@@ -31,3 +31,18 @@ Content-Type: application/json
     "timeString" : "20220812011030",
     "format" : "YYYYMMDDHHmmss"
 }
+
+###
+POST http://localhost:5000/api/v1/todos
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWQ4MDFkZDBkYWUwZTcwMWM1YzJhYzciLCJpYXQiOjE2NDE3Mzg1MTEsImV4cCI6MTY0MTc0MjExMX0.QTdbMexRFhX1hU595IPCj0U_5H4wrNQFP7tiTPvl3Jo
+Content-Type: application/json
+
+{
+    "title" : "A todo task",
+    "desc": "This is a sample todo",
+    "isCompleted" : false
+}
+
+###
+GET http://localhost:5000/api/v1/todos
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWQ4MDFkZDBkYWUwZTcwMWM1YzJhYzciLCJpYXQiOjE2NDE3Mzg1MTEsImV4cCI6MTY0MTc0MjExMX0.QTdbMexRFhX1hU595IPCj0U_5H4wrNQFP7tiTPvl3Jo
