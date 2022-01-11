@@ -18,10 +18,13 @@ router.post("/", uploadMiddleware, (req, res) => {
         const artwork = req.files["artwork"];
         const track = req.files["track"];
 
+        const artworkUrl = `${req.protocol}://${req.get('host')}/static/uploads/${artwork[0].filename}`;
+        const trackUrl = `${req.protocol}://${req.get('host')}/static/uploads/${track[0].filename}`;
+
         if (artwork && track) {
             return res.status(200).json({
-                artwork,
-                track
+                artworkUrl,
+                trackUrl
             })
         }
     } catch (error) {

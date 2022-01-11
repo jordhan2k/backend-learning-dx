@@ -10,7 +10,7 @@ const storage = multer.diskStorage({
         cb(null, "./resources/static/uploads/")
     },
     filename: (req, file, cb) => {
-        cb(null, uuidv4() + "-" + file.originalname);
+        cb(null, uuidv4() + "_" + file.originalname.split(" ").join("_"));
     }
 });
 
@@ -20,8 +20,8 @@ const upload = multer({
         fieldSize: MAX_FILE_SIZE
     },
     fileFilter: (req, file, cb) => {
-        if (!file.originalname.match(/\.(jpg|jpeg|png|gif|mp3|wav)$/) ) {
-            return cb(new Error ('Only image and audio are allowed.'), false);
+        if (!file.originalname.match(/\.(jpg|jpeg|png|gif|mp3|wav)$/)) {
+            return cb(new Error('Only image and audio are allowed.'), false);
         }
         cb(null, true);
     }

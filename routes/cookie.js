@@ -6,7 +6,8 @@ router.get("/setCookie", (req, res) => {
     res.cookie("editableToken", "acdkfghor456sf");
     res.cookie("secureToken", "acdkfghor456sjldjf", { signed: true });
     res.json({
-        success: true
+        success: true,
+        localhost: `${req.protocol}://${req.get('host')}${req.originalUrl}`
     });
 });
 
